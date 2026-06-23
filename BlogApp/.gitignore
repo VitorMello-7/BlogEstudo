@@ -1,0 +1,55 @@
+# Build outputs
+bin/
+obj/
+
+# User-specific Visual Studio files
+*.user
+.vs/
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Core secrets and sensitive config
+appsettings.Production.json
+appsettings.Staging.json
+secrets.json
+**/secrets.json
+# User secrets are stored outside the repo by default, but guard any local overrides
+appsettings.*.Local.json
+
+# Environment variable files
+.env
+.env.*
+!.env.example
+
+# Published output
+publish/
+**/publish/
+
+# Docker
+.dockerignore.local
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test results
+TestResults/
+coverage/
+*.coveragexml
