@@ -11,7 +11,6 @@ public class Post
     [MaxLength(200)]
     public string Title { get; set; } = string.Empty;
 
-    [Required]
     [MaxLength(200)]
     public string Slug { get; set; } = string.Empty;
 
