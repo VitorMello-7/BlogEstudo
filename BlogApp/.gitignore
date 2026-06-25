@@ -53,3 +53,14 @@ Thumbs.db
 TestResults/
 coverage/
 *.coveragexml
+
+# EF Core local migration bundles
+efbundle
+efbundle.exe
+
+# dotnet user secrets (local override, outside repo by default but guard it)
+**/Properties/launchSettings.json.user
+
+# Temporary files
+*.tmp
+*.temp

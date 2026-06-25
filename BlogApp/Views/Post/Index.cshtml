@@ -1,0 +1,51 @@
+@model IEnumerable<BlogApp.Models.Post>
+
+@{
+    ViewData["Title"] = "Posts";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Posts</h1>
+    <a asp-action="Create" class="btn btn-primary">Novo Post</a>
+</div>
+
+@if (!Model.Any())
+{
+    <p class="text-muted">Nenhum post encontrado.</p>
+}
+else
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Slug</th>
+                <th>Status</th>
+                <th>Criado em</th>
+                <th>Publicado em</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var post in Model)
+            {
+                <tr>
+                    <td>@post.Title</td>
+                    <td><code>@post.Slug</code></td>
+                    <td>
+                        <span class="badge @(post.Status == PostStatus.Published ? "bg-success" : post.Status == PostStatus.Archived ? "bg-secondary" : "bg-warning text-dark")">
+                            @post.Status
+                        </span>
+                    </td>
+                    <td>@post.CreatedAt.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@(post.PublishedAt.HasValue ? post.PublishedAt.Value.ToLocalTime().ToString("dd/MM/yyyy HH:mm") : "-")</td>
+                    <td class="text-end">
+                        <a asp-action="Details" asp-route-id="@post.Id" class="btn btn-sm btn-outline-secondary">Ver</a>
+                        <a asp-action="Edit" asp-route-id="@post.Id" class="btn btn-sm btn-outline-primary">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@post.Id" class="btn btn-sm btn-outline-danger">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
