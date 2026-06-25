@@ -67,6 +67,9 @@ public class PostController : Controller
     public async Task<IActionResult> Edit(int id, Post post)
     {
         if (id != post.Id) return BadRequest();
+
+        ModelState.Remove(nameof(Post.Slug)); // Remove Slug da  validação, pois será gerado automaticamente
+
         if (!ModelState.IsValid) return View(post);
 
         var existing = await _db.Posts.FindAsync(id);
